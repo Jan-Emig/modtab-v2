@@ -1,14 +1,18 @@
 import {FC} from "react";
 import {Box} from "@chakra-ui/react";
+import { useSelector } from "react-redux";
+import { RootState } from "../../store/store";
 
 interface BackgroundProps {
-    image?: string;
-    blur?: string | number;
-    opacity: number;
+
 }
 
-const Background: FC<BackgroundProps> = ({ image, blur, opacity = 1 }) => {
+const Background: FC<BackgroundProps> = ({  }) => {
 
+    const image = useSelector((state: RootState) => state.background.image);
+    const blur = useSelector((state: RootState) => state.background.blur);
+    const opacity = useSelector((state: RootState) => state.background.opacity);
+    
     const render = () => {
         const validOpacity = Math.min(Math.max(opacity, 0), 1);
         return (

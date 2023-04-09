@@ -8,15 +8,11 @@ function App() {
 
   return (
     <div className="app">
-      <Background
-        image='/images/default_bg2.jpg'
-        blur={0}
-        opacity={1}
-      />
-        <MusicPlayer />
-        <Weather />
-        <CenterView />
-        <Quote />
+      <Background />
+      <MusicPlayer />
+      <Weather />
+      <CenterView />
+      <Quote />
     </div>
   )
 }

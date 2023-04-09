@@ -11,12 +11,12 @@ const MusicPlayer: FC<MusicPlayerProps> = ({}) => {
     const [isHover, setIsHover] = useState(false);
 
     const track: MusicTrack = {
-        artist: 'Tate McRae',
-        title: 'Rubberband',
+        artist: 'Chloe Rose',
+        title: 'Echoes of Youth',
         length: 2.78,
         currentTime: 1.63,
         status: 'playing',
-        artwork: '/images/placeholder/music_artwork.jpg',
+        artwork: '/images/placeholder/album_cover.jpg',
         src: ''
     };
 
@@ -44,7 +44,7 @@ const MusicPlayer: FC<MusicPlayerProps> = ({}) => {
                     src={track.artwork}
                     alt={`${track.artist} - ${track.title}`} 
                     borderRadius='xl'
-                    mr={4}
+                    // mr={4}
                     zIndex={1}
                 />
                 <MusicTrackInfo

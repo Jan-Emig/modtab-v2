@@ -7,7 +7,7 @@ export interface ClockState {
 }
 
 const initState: ClockState = {
-    clockType: ClockType.Analog,
+    clockType: ClockType.Digital,
 };
 
 export const clockSlice = createSlice({

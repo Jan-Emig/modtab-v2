@@ -12,7 +12,7 @@ interface MusicTrackInfoProps {
 
 const baseProps = {
     transform: 'auto',
-    transition: 'transform 0.4s cubic-bezier(.71,-0.08,.25,1)'
+    transition: 'transform 0.6s cubic-bezier(.71,-0.08,.25,1)'
 }
 
 const MusicTrackInfo: FC<MusicTrackInfoProps> = ({ artist, title, length, currentTime, isHover }) => {
@@ -24,11 +24,13 @@ const MusicTrackInfo: FC<MusicTrackInfoProps> = ({ artist, title, length, curren
             <Box
                 color='white'
                 cursor='default'
+                pl={4}
             >
                 <Heading
                     {...baseProps}
                     fontSize='1.5rem'
                     translateX={translateX}
+                    color='purple.300'
                 >
                     { artist }
                 </Heading>
@@ -38,7 +40,7 @@ const MusicTrackInfo: FC<MusicTrackInfoProps> = ({ artist, title, length, curren
                     lineHeight='1.4'
                     opacity={0.8}
                     translateX={translateX}
-                    transitionDelay='0.2s'
+                    transitionDelay='0.3s'
                 >
                     { title }
                 </Heading>
@@ -46,9 +48,9 @@ const MusicTrackInfo: FC<MusicTrackInfoProps> = ({ artist, title, length, curren
                     {...baseProps}
                     fontSize='0.8rem'
                     opacity={0.8}
-                    color='primary.500'
+                    color='purple.500'
                     translateX={translateX}
-                    transitionDelay='0.4s'
+                    transitionDelay='0.5s'
                 >
                     { currentTime } - { length }
                 </Heading>
