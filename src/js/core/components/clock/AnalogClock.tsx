@@ -38,7 +38,8 @@ const timeLabels = [
  */
 const AnalogClock: FC<AnalogClockProps> = ({ time, fontSize = '2rem' }) => {
 
-    time.hour = 21;
+    // time.hour = 8;
+    // time.minute = 20;
     return (
         <Box
             position='relative'
@@ -80,12 +81,23 @@ const AnalogClock: FC<AnalogClockProps> = ({ time, fontSize = '2rem' }) => {
                 <Box
                     position='absolute'
                     left='-2.5px'
-                    transform={`rotate(${180 + (time.hour + 6) * 15}deg)`}
+                    transform={`rotate(${(time.hour % 12 + time.minute / 60) * 30 -180 }deg)`}
                     transformOrigin='top center'
                     width='5px'
                     height='50px'
                     borderRadius='full'
                     bg='white'
+                />
+                <Box
+                    position='absolute'
+                    left='-2.5px'
+                    transform={`rotate(${time.minute * 6 - 180 }deg)`}
+                    transformOrigin='top center'
+                    width='5px'
+                    height='100px'
+                    borderRadius='full'
+                    bg='white'
+                    opacity={0.5}
                 />
             </Box>
         </Box>
