@@ -1,6 +1,6 @@
 import { Box, Heading } from "@chakra-ui/react";
 import { FC } from "react";
-import { MusicTrack } from "./types/music";
+import { MusicTrack } from "./types/music.type";
 
 interface MusicTrackInfoProps {
     artist: MusicTrack['artist'];
@@ -25,6 +25,7 @@ const MusicTrackInfo: FC<MusicTrackInfoProps> = ({ artist, title, length, curren
                 color='white'
                 cursor='default'
                 pl={4}
+                overflow='hidden'
             >
                 <Heading
                     {...baseProps}

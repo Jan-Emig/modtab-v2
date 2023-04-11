@@ -1,7 +1,7 @@
 import { FC, useState } from "react";
 import { Box, Image } from "@chakra-ui/react";
 import MusicTrackInfo from "./MusicTrackInfo";
-import { MusicTrack } from "./types/music";
+import { MusicTrack } from "./types/music.type";
 
 interface MusicPlayerProps {
     
@@ -31,7 +31,6 @@ const MusicPlayer: FC<MusicPlayerProps> = ({}) => {
                 top='30px'
                 left='30px'
                 alignItems='center'
-                overflow='hidden'
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}
                 _hover={{
@@ -46,6 +45,8 @@ const MusicPlayer: FC<MusicPlayerProps> = ({}) => {
                     borderRadius='xl'
                     // mr={4}
                     zIndex={1}
+                    onMouseEnter={handleMouseEnter}
+                    onMouseLeave={handleMouseLeave}
                 />
                 <MusicTrackInfo
                     artist={track.artist}

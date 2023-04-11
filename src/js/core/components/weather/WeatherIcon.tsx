@@ -1,5 +1,5 @@
 import {FC} from "react";
-import {WeatherCondition} from "./types/weather";
+import {WeatherCondition} from "./types/weather.type";
 import {Icon, Image} from "@chakra-ui/react";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store/store";

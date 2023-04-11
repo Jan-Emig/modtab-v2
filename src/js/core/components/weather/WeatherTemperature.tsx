@@ -1,6 +1,6 @@
 import {FC} from "react";
 import {Heading} from "@chakra-ui/react";
-import {TemperatureUnit} from "./types/weather";
+import {TemperatureUnit} from "./types/weather.type";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store/store";
 

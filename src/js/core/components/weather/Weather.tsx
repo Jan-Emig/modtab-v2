@@ -1,7 +1,7 @@
 import {FC} from "react";
 import {Box} from "@chakra-ui/react";
 import WeatherIcon from "./WeatherIcon";
-import {WeatherCondition} from "./types/weather";
+import {WeatherCondition} from "./types/weather.type";
 import WeatherLocation from "./WeatherLocation";
 import WeatherTemperature from "./WeatherTemperature";
 

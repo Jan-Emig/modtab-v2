@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { TemperatureUnit, WeatherCondition } from "../../components/weather/types/weather";
+import { TemperatureUnit, WeatherCondition } from "../../components/weather/types/weather.type";
 import { RootState } from "../store";
 
 export interface WeatherState {
