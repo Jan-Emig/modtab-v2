@@ -38,10 +38,10 @@ const initState: ClockState = {
                 smoothTransition: false,
             },
             secondHand: {
-                color: 'black',
+                color: 'white',
                 length: 2,
                 opacity: 0.5,
-                isVisible: true,
+                isVisible: false,
                 smoothTransition: false,
             },
             graduations: {
