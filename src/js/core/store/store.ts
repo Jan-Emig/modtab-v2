@@ -1,7 +1,7 @@
-import { configureStore } from "@reduxjs/toolkit";
-import backgroundReducer, { BackgroundState } from "./features/backgroundReducer";
-import clockReducer, { ClockState } from "./features/clockReducer";
-import weatherReducer, { WeatherState } from "./features/weatherReducer";
+import { combineReducers, configureStore, Reducer } from "@reduxjs/toolkit";
+import backgroundReducer, { BackgroundState } from "./features/background.reducer";
+import clockReducer, { ClockState } from "./features/clock.reducer";
+import weatherReducer, { WeatherState } from "./features/weather.reducer";
 
 export type RootState = {
     clock: ClockState;
@@ -17,3 +17,10 @@ export const store = configureStore({
         background: backgroundReducer,
     }
 })
+
+// const addDynamicReducer = (reducer: Reducer) => {
+//     const combinedRedducers = combineReducers({
+//         ...store.getState(),
+//         [reducer.name]: reducer
+//     });
+// }

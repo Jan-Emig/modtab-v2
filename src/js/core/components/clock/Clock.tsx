@@ -5,6 +5,7 @@ import { RootState } from "../../store/store";
 import { useSelector } from "react-redux";
 import AnalogClock from "./faces/AnalogClock";
 import { useInterval } from "@chakra-ui/react";
+import CircleClock from "./faces/CircleClock";
 
 interface ClockProps {
     fontSize?: string;
@@ -32,6 +33,8 @@ const Clock: FC<ClockProps> = ({ fontSize }) => {
                 return <DigitalClock time={time} fontSize={fontSize} />
             case ClockType.Analog:
                 return <AnalogClock time={time} fontSize={fontSize} />
+            case ClockType.Circle:
+                return <CircleClock time={time} fontSize={fontSize} />
             default:
                 return <DigitalClock time={time} fontSize={fontSize} />
         }
