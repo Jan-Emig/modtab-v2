@@ -7,12 +7,14 @@ import AnalogClock from "./faces/AnalogClock";
 import { useInterval } from "@chakra-ui/react";
 import CircleClock from "./faces/CircleClock";
 
+const defaultTime = new Date();
+
 interface ClockProps {
     fontSize?: string;
 }
 
 const Clock: FC<ClockProps> = ({ fontSize }) => {
-    const [time, setTime] = useState<Time>({ hour: 7, minute: 3 , second: 0})
+    const [time, setTime] = useState<Time>({ hour: defaultTime.getHours(), minute: defaultTime.getMinutes() , second: defaultTime.getSeconds() })
 
     const clockType = useSelector((state: RootState) => state.clock.clockType);
     const isAnalogClockSecondHandVisible = useSelector((state: RootState) => state.clock.clockProperty.analog.secondHand.isVisible);
