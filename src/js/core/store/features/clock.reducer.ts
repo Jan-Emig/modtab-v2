@@ -1,7 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { AnalogClockGraduationSettings, AnalogClockHandSettings, ClockType } from "../../components/clock/types/clock.type";
-import { FontFamily, FontSettings, FontWeight } from "../../types/font.type";
-import { RootState } from "../store";
+import {  FontSettings, FontWeight } from "../../types/font.type";
 
 export interface ClockState {
     clockType: ClockType;
@@ -30,6 +29,7 @@ export interface ClockState {
             size: number,
             thickness: number,
             showSeconds?: boolean,
+            flashingDots?: boolean,
         },
     }
 }
@@ -93,6 +93,7 @@ const initState: ClockState = {
             showSeconds: false,
             size: 330,
             thickness: 4,
+            flashingDots: false,
         }
     },
 };

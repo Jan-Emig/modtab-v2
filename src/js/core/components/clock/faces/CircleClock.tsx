@@ -1,19 +1,9 @@
-import { border, Box, Center, CircularProgress, Flex, Heading, keyframes, Text } from "@chakra-ui/react";
+import { Center, CircularProgress, Flex, Text } from "@chakra-ui/react";
 import { FC } from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../store/store";
+import TimeSeparator from "../TimeSeparator";
 import { ClockProps } from "../types/clock.type";
-
-const animation = keyframes`
-    from {
-        opacity: 0
-    }
-    to {
-        opacity: 1
-    }
-`
-
-const animationStr = `${animation} 1s ease-in-out infinite alternate`
 
 /**
  * Circle Clock Face Component
@@ -25,7 +15,7 @@ const CircleClock: FC<ClockProps> = ({ time }) => {
     const secondsFontSettings = useSelector((state: RootState) => state.clock.clockProperty.circle.secondsFont);
 
     const fontSize = settings.showSeconds ? secondsFontSettings?.size ?? fontSettings?.size : fontSettings?.size;
-    
+
     return (
         <CircularProgress
             max={60}
@@ -51,17 +41,18 @@ const CircleClock: FC<ClockProps> = ({ time }) => {
                 <Center>
                     <Text>{ time.hour.toString().padStart(2, '0') }</Text>
                 </Center>
-                <Center>
-                    <Text position='relative' transform='translateY(-5%)'>:</Text>
-                </Center>
+                <TimeSeparator isFlashing={settings.flashingDots} />
                 <Center>
                     <Text>{ time.minute.toString().padStart(2, '0') }</Text>
                 </Center>
                 {
                     settings.showSeconds && (
-                        <Center>
-                            { time.second.toString().padStart(2, '0') }
-                        </Center>
+                        <>
+                            <TimeSeparator isFlashing={settings.flashingDots} />
+                            <Center>
+                                { time.second.toString().padStart(2, '0') }
+                            </Center>
+                        </>
                     )
                 }
             </Flex>
