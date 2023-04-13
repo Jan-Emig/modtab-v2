@@ -22,7 +22,7 @@ const Clock: FC<ClockProps> = ({ fontSize }) => {
 
     useInterval(() => {
         const date = new Date();
-        if (!isAnalogClockSecondHandVisible && !isAnalogClockSecondHandVisible &&
+        if (!isAnalogClockSecondHandVisible && !isCircularClockSecondsVisible &&
             (date.getHours() == time.hour || date.getMinutes() == time.minute)) return;
         setTime({ hour: date.getHours(), minute: date.getMinutes(), second: date.getSeconds() })
     }, 1000);

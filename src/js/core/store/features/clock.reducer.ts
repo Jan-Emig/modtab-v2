@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { AnalogClockGraduationSettings, AnalogClockHandSettings, ClockType } from "../../components/clock/types/clock.type";
-import { FontFamily, FontSettings } from "../../types/font.type";
+import { FontFamily, FontSettings, FontWeight } from "../../types/font.type";
 import { RootState } from "../store";
 
 export interface ClockState {
@@ -81,6 +81,7 @@ const initState: ClockState = {
                 //TODO: Limit font size relative to the clock size
                 size: '5rem', // ratio circle size : font size => 330 : 5rem (80px) = 4.125 : 1
                 color: 'white',
+                weight: FontWeight.Semibold,
                 // shadow: '0 0 20px rgba(0, 0, 0, 0.3)'
             },
             secondsFont: {
