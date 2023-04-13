@@ -12,9 +12,8 @@ const CircleClock: FC<ClockProps> = ({ time }) => {
 
     const settings = useSelector((state: RootState) => state.clock.clockProperty.circle);
     const fontSettings = useSelector((state: RootState) => state.clock.clockProperty.circle.font);
-    const secondsFontSettings = useSelector((state: RootState) => state.clock.clockProperty.circle.secondsFont);
 
-    const fontSize = settings.showSeconds ? secondsFontSettings?.size ?? fontSettings?.size : fontSettings?.size;
+    const fontSize = settings.showSeconds ? fontSettings?.sizeWithSeconds ?? fontSettings?.size : fontSettings?.size;
 
     return (
         <CircularProgress

@@ -19,7 +19,9 @@ export interface ClockState {
             dotColor?: string,
         },
         circle: {
-            font?: Partial<FontSettings>,
+            font?: Partial<FontSettings> & {
+                sizeWithSeconds: string,
+            },
             // Font settings if seconds are displayed
             hourFont?: Partial<FontSettings>,
             minuteFont?: Partial<FontSettings>,
@@ -82,15 +84,16 @@ const initState: ClockState = {
             font: {
                 //TODO: Limit font size relative to the clock size
                 size: '5rem', // ratio circle size : font size => 330 : 5rem (80px) = 4.125 : 1
+                sizeWithSeconds: '3rem',
                 color: 'white',
                 weight: FontWeight.Semibold,
                 // shadow: '0 0 20px rgba(0, 0, 0, 0.3)'
             },
             hourFont: {
-                color: 'red',
+                // color: 'red',
             },
             minuteFont: {
-                color: 'white',
+                // color: 'white',
             },
             secondsFont: {
                 color: 'red',
@@ -99,7 +102,7 @@ const initState: ClockState = {
             trackColor: 'white',
             progressColor: 'purple.400',
             showProgress: false,
-            showSeconds: false,
+            showSeconds: true,
             size: 330,
             thickness: 4,
             flashingDots: false,
