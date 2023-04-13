@@ -39,17 +39,32 @@ const CircleClock: FC<ClockProps> = ({ time }) => {
                 transform='translate(-50%, -50%)'
             >
                 <Center>
-                    <Text>{ time.hour.toString().padStart(2, '0') }</Text>
+                    <Text
+                        fontSize={settings.hourFont?.size}
+                        fontFamily={settings.hourFont?.family}
+                        fontWeight={settings.hourFont?.weight}
+                        color={settings.hourFont?.color}
+                    >{ time.hour.toString().padStart(2, '0') }</Text>
                 </Center>
                 <TimeSeparator isFlashing={settings.flashingDots} />
                 <Center>
-                    <Text>{ time.minute.toString().padStart(2, '0') }</Text>
+                    <Text
+                        fontSize={settings.minuteFont?.size}
+                        fontFamily={settings.minuteFont?.family}
+                        fontWeight={settings.minuteFont?.weight}
+                        color={settings.minuteFont?.color}
+                    >{ time.minute.toString().padStart(2, '0') }</Text>
                 </Center>
                 {
                     settings.showSeconds && (
                         <>
                             <TimeSeparator isFlashing={settings.flashingDots} />
-                            <Center>
+                            <Center
+                                fontSize={settings.secondsFont?.size}
+                                fontFamily={settings.secondsFont?.family}
+                                fontWeight={settings.secondsFont?.weight}
+                                color={settings.secondsFont?.color}
+                            >
                                 { time.second.toString().padStart(2, '0') }
                             </Center>
                         </>

@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { AnalogClockGraduationSettings, AnalogClockHandSettings, ClockType } from "../../components/clock/types/clock.type";
-import {  FontSettings, FontWeight } from "../../types/font.type";
+import {  FontFamily, FontSettings, FontWeight } from "../../types/font.type";
 
 export interface ClockState {
     clockType: ClockType;
@@ -21,7 +21,9 @@ export interface ClockState {
         circle: {
             font?: Partial<FontSettings>,
             // Font settings if seconds are displayed
-            secondsFont?: Partial<Pick<FontSettings, "size">>,
+            hourFont?: Partial<FontSettings>,
+            minuteFont?: Partial<FontSettings>,
+            secondsFont?: Partial<FontSettings>,
             trackColor: string,
             progressColor: string,
             isCapRound?: boolean,
@@ -84,7 +86,14 @@ const initState: ClockState = {
                 weight: FontWeight.Semibold,
                 // shadow: '0 0 20px rgba(0, 0, 0, 0.3)'
             },
+            hourFont: {
+                color: 'red',
+            },
+            minuteFont: {
+                color: 'white',
+            },
             secondsFont: {
+                color: 'red',
                 size: '3rem',
             },
             trackColor: 'white',
