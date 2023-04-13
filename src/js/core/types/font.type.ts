@@ -3,6 +3,7 @@ export type FontSettings = {
     color: string,
     family?: FontFamily,
     opacity?: number,
+    shadow?: string,
 }
 
 export enum FontFamily {

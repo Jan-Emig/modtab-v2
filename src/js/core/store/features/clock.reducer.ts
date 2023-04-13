@@ -21,12 +21,15 @@ export interface ClockState {
         },
         circle: {
             font?: Partial<FontSettings>,
+            // Font settings if seconds are displayed
+            secondsFont?: Partial<Pick<FontSettings, "size">>,
             trackColor: string,
             progressColor: string,
             isCapRound?: boolean,
             showProgress?: boolean,
             size: number,
             thickness: number,
+            showSeconds?: boolean,
         },
     }
 }
@@ -75,12 +78,18 @@ const initState: ClockState = {
         },
         circle: {
             font: {
-                size: '5rem',
+                //TODO: Limit font size relative to the clock size
+                size: '5rem', // ratio circle size : font size => 330 : 5rem (80px) = 4.125 : 1
                 color: 'white',
+                // shadow: '0 0 20px rgba(0, 0, 0, 0.3)'
+            },
+            secondsFont: {
+                size: '3rem',
             },
             trackColor: 'white',
             progressColor: 'purple.400',
             showProgress: false,
+            showSeconds: false,
             size: 330,
             thickness: 4,
         }

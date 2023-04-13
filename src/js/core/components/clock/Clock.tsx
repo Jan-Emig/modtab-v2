@@ -18,10 +18,12 @@ const Clock: FC<ClockProps> = ({ fontSize }) => {
 
     const clockType = useSelector((state: RootState) => state.clock.clockType);
     const isAnalogClockSecondHandVisible = useSelector((state: RootState) => state.clock.clockProperty.analog.secondHand.isVisible);
+    const isCircularClockSecondsVisible = useSelector((state: RootState) => state.clock.clockProperty.circle.showSeconds);
 
     useInterval(() => {
         const date = new Date();
-        if (!isAnalogClockSecondHandVisible && (date.getHours() == time.hour || date.getMinutes() == time.minute)) return;
+        if (!isAnalogClockSecondHandVisible && !isAnalogClockSecondHandVisible &&
+            (date.getHours() == time.hour || date.getMinutes() == time.minute)) return;
         setTime({ hour: date.getHours(), minute: date.getMinutes(), second: date.getSeconds() })
     }, 1000);
 
