@@ -6,14 +6,12 @@ import { useSelector } from "react-redux";
 import AnalogClock from "./faces/AnalogClock";
 import { useInterval } from "@chakra-ui/react";
 import CircleClock from "./faces/CircleClock";
+import VerticalClock from "./faces/VerticalClock";
 
 const defaultTime = new Date();
 
-interface ClockProps {
-    fontSize?: string;
-}
 
-const Clock: FC<ClockProps> = ({ fontSize }) => {
+const Clock: FC = ({  }) => {
     const [time, setTime] = useState<Time>({ hour: defaultTime.getHours(), minute: defaultTime.getMinutes() , second: defaultTime.getSeconds() })
 
     const clockType = useSelector((state: RootState) => state.clock.clockType);
@@ -34,13 +32,15 @@ const Clock: FC<ClockProps> = ({ fontSize }) => {
     const getClockType = (type: ClockType): ReactElement => {
         switch (type) {
             case ClockType.Digital:
-                return <DigitalClock time={time} fontSize={fontSize} />
+                return <DigitalClock time={time} />
             case ClockType.Analog:
-                return <AnalogClock time={time} fontSize={fontSize} />
+                return <AnalogClock time={time} />
             case ClockType.Circle:
-                return <CircleClock time={time} fontSize={fontSize} />
+                return <CircleClock time={time} />
+            case ClockType.Vertical:
+                return <VerticalClock time={time} />
             default:
-                return <DigitalClock time={time} fontSize={fontSize} />
+                return <DigitalClock time={time} />
         }
     }
 

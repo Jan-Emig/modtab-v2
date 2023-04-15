@@ -14,8 +14,9 @@ interface AnalogClockProps extends ClockProps {
 /**
  * Analog Clock Face Component
  */
-const AnalogClock: FC<AnalogClockProps> = ({ time, fontSize = '2rem' }) => {
+const AnalogClock: FC<AnalogClockProps> = ({ time }) => {
 
+    const baseSettings = useSelector((state: RootState) => state.clock.clockProperty.base);
     const settings = useSelector((state: RootState) => state.clock.clockProperty.analog);
 
     // const dotColor = useSelector((state: RootState) => state.clock.clockProperty.analog.dotColor);
@@ -44,7 +45,7 @@ const AnalogClock: FC<AnalogClockProps> = ({ time, fontSize = '2rem' }) => {
             {
                 <TimeLabel
                     labels={timeLabels}
-                    fontSize={fontSize}
+                    font={settings.graduations.major.font ?? baseSettings.font}
                 />
             }
             <Box

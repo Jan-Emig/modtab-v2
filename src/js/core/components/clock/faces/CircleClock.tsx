@@ -18,7 +18,7 @@ const CircleClock: FC<ClockProps> = ({ time }) => {
     return (
         <CircularProgress
             max={60}
-            value={23}
+            value={time.minute + (time.second / 60) / 60}
             size={settings.size + 'px'}
             thickness={settings.thickness + 'px'}
             color={settings.showProgress ? settings.progressColor : settings.trackColor}

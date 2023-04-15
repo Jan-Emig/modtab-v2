@@ -1,5 +1,6 @@
 import { FC, memo } from "react";
 import { Box, Text } from "@chakra-ui/react";
+import { FontSettings } from "../../types/font.type";
 
 export type TimeLabelProps = {
     label: string,
@@ -13,7 +14,7 @@ export type TimeLabelProps = {
 /**
  * Time Labels Component (3, 6, 9, 12)
  */
-const TimeLabelComp: FC<{labels: TimeLabelProps[], fontSize: string}> = ({ labels, fontSize }) => {
+const TimeLabelComp: FC<{labels: TimeLabelProps[], font?: FontSettings }> = ({ labels, font }) => {
     return (
         <>
         {
@@ -26,8 +27,9 @@ const TimeLabelComp: FC<{labels: TimeLabelProps[], fontSize: string}> = ({ label
                     left={label.left}
                     right={label.right}
                     transform={label.transform}
-                    fontSize={fontSize}
-                    fontWeight='bold'
+                    fontSize={font?.size ?? '2rem'}
+                    color={font?.color ?? 'white'}
+                    fontWeight={font?.weight ?? 'bold'}
                 >{label.label}</Text>
             ))
         }
@@ -35,7 +37,8 @@ const TimeLabelComp: FC<{labels: TimeLabelProps[], fontSize: string}> = ({ label
     )
 };
 
-const TimeLabel = memo(TimeLabelComp, (prevProps, nextProps) => prevProps.fontSize === nextProps.fontSize);
+//TODO: Optimize comparison function
+const TimeLabel = memo(TimeLabelComp, (prevProps, nextProps) => prevProps.labels === nextProps.labels && prevProps.font === nextProps.font);
 
 
 

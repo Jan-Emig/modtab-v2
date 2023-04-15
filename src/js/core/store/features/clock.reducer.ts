@@ -1,11 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { AnalogClockGraduationSettings, AnalogClockHandSettings, ClockType } from "../../components/clock/types/clock.type";
+import { AnalogClockGraduationSettings, AnalogClockHandSettings, BaseClockFaceProps, ClockDivider, ClockFaceProps, ClockType } from "../../components/clock/types/clock.type";
 import {  FontFamily, FontSettings, FontWeight } from "../../types/font.type";
 
 export interface ClockState {
     clockType: ClockType;
     clockProperty: {
-        analog: {
+        base: BaseClockFaceProps,
+        analog: ClockFaceProps & {
             hourHand: AnalogClockHandSettings,
             minuteHand: AnalogClockHandSettings,
             secondHand: AnalogClockHandSettings,
@@ -18,8 +19,8 @@ export interface ClockState {
             borderColor: string,
             dotColor?: string,
         },
-        circle: {
-            font?: Partial<FontSettings> & {
+        circle: ClockFaceProps & {
+            font: Partial<FontSettings> & {
                 sizeWithSeconds: string,
             },
             // Font settings if seconds are displayed
@@ -35,12 +36,32 @@ export interface ClockState {
             showSeconds?: boolean,
             flashingDots?: boolean,
         },
+        vertical: ClockFaceProps & {
+            hourFont: Partial<FontSettings>,
+            minuteFont: Partial<FontSettings>,
+            timeSpacing: string,
+        }
     }
 }
 
 const initState: ClockState = {
-    clockType: ClockType.Circle,
+    clockType: ClockType.Vertical,
     clockProperty: {
+        base: {
+            font: {
+                size: '8rem',
+                color: 'white',
+                weight: FontWeight.Semibold,
+            },
+            divider: {
+                width: '75%',
+                borderRadius: 'full',
+                borderWidth: 5,
+                color: 'white',
+                opacity: 1,
+                marginBottom: 5,
+            }
+        },
         analog: {
             hourHand: {
                 length: 5,
@@ -69,6 +90,10 @@ const initState: ClockState = {
                     height: 5,
                     width: 7,
                     opacity: 1,
+                    font: {
+                        size: '2rem',
+                        color: 'white',
+                    }
                 },
                 minor: {
                     isVisible: false,
@@ -96,16 +121,28 @@ const initState: ClockState = {
                 // color: 'white',
             },
             secondsFont: {
-                color: 'red',
-                size: '3rem',
+                // color: 'red',
+                // size: '3rem',
             },
             trackColor: 'white',
-            progressColor: 'purple.400',
-            showProgress: false,
+            progressColor: '#35E899',
+            showProgress: true,
             showSeconds: true,
             size: 330,
             thickness: 4,
             flashingDots: false,
+        },
+        vertical: {
+            hourFont: {
+                // color: 'red',
+            },
+            minuteFont: {
+                // color: 'green.400',
+            },
+            timeSpacing: '20px',
+            divider: {
+                width: '50%'
+            }
         }
     },
 };
