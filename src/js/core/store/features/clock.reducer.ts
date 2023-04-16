@@ -1,6 +1,10 @@
+import * as CSS from 'csstype';
 import { createSlice } from "@reduxjs/toolkit";
 import { AnalogClockGraduationSettings, AnalogClockHandSettings, BaseClockFaceProps, ClockDivider, ClockFaceProps, ClockType } from "../../components/clock/types/clock.type";
 import {  FontFamily, FontSettings, FontWeight } from "../../types/font.type";
+import { ThemeTypings, ResponsiveValue } from '@chakra-ui/react';
+
+declare type Token<CSSType, ThemeKey = unknown> = ThemeKey extends keyof ThemeTypings ? ResponsiveValue<CSSType | ThemeTypings[ThemeKey]> : ResponsiveValue<CSSType>;
 
 export interface ClockState {
     clockType: ClockType;
@@ -40,6 +44,8 @@ export interface ClockState {
             hourFont: Partial<FontSettings>,
             minuteFont: Partial<FontSettings>,
             timeSpacing: string,
+            letterSpacing: number,
+            marginBottom: number,
         }
     }
 }
@@ -139,10 +145,13 @@ const initState: ClockState = {
             minuteFont: {
                 // color: 'green.400',
             },
-            timeSpacing: '20px',
+            timeSpacing: '30px',
             divider: {
-                width: '50%'
-            }
+                width: '50%',
+                borderWidth: 3,
+            },
+            letterSpacing: 0,
+            marginBottom: 8,
         }
     },
 };

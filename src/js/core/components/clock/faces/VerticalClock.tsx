@@ -23,6 +23,7 @@ const VerticalClock: FC<ClockProps> = ({ time }) => {
                     fontWeight={settings.hourFont?.weight ??baseSettings.font.weight}
                     textShadow={settings.hourFont?.shadow ?? baseSettings.font.shadow}   
                     lineHeight={0.8}
+                    letterSpacing={settings.letterSpacing}
                 >
                     { time.hour.toString().padStart(2, '0') }
                 </Text>
@@ -34,7 +35,8 @@ const VerticalClock: FC<ClockProps> = ({ time }) => {
                     textShadow={settings.minuteFont?.shadow ?? baseSettings.font.shadow}   
                     lineHeight={0.8}
                     mt={settings.timeSpacing}
-                    mb={5}
+                    mb={settings.marginBottom}
+                    letterSpacing={settings.letterSpacing}
                 >
                     { time.minute.toString().padStart(2, '0') }
                 </Text>
